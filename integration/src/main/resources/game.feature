@@ -3,31 +3,36 @@ Feature: Customer create & confirm
 
   Scenario Outline: Create customer & confirm
     
-    And GET /game/play on RTS from ROCK into CustomerResult<remember>
-    Then CustomerResult<remember> should match
+    #Test Api Endpoint by ROCK Input
+    And GET /game/play on RTS from ROCK into GameResult1<remember>
+    Then GameResult1<remember> should match
       """
         {
-          "success": true
+          "success": true,
+          "userSelection": "ROCK"
         }
       """
-    
-    And GET /game/play on RTS from PAPER into CustomerResult<remember>
-    Then CustomerResult<remember> should match
+    #Test Api Endpoint by PAPER Input
+    And GET /game/play on RTS from PAPER into GameResult2<remember>
+    Then GameResult2<remember> should match
       """
         {
-          "success": true
+          "success": true,
+          "userSelection": "PAPER"
         }
       """
      
-    
-    And GET /game/play on RTS from SCISSORS into CustomerResult<remember>
-    Then CustomerResult<remember> should match
+    #Test Api Endpoint by SCISSORS Input
+    And GET /game/play on RTS from SCISSORS into GameResult3<remember>
+    Then GameResult3<remember> should match
       """
         {
-          "success": true
+          "success": true,
+          "userSelection": "SCISSORS"
         }
       """  
+   
       
-    Examples: Customers
-      | email            | firstName | lastName | username | remember |
-      | test@example.org | Adam      | Smith    | testUser | C        |
+    Examples: Gameplay
+      | UserInput    | computerInput |
+      | ROCK         | PAPER         |
