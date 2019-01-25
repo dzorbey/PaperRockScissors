@@ -6,7 +6,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = {"pretty"}, monochrome = true,
 
-    tags = {"@product1"}
+    tags = {"@game1"}
 )
 public class RunTests {
 }

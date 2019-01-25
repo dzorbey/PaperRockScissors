@@ -33,7 +33,7 @@ public class ApiSteps extends Stepdef {
     List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
     interceptors.add((r, b, e) -> {
       HttpRequest w = new HttpRequestWrapper(r);
-      w.getHeaders().set("CallerID", source);
+      w.getHeaders().set("inputHeader", source);
       return e.execute(w, b);
     });
     restTemplate.setInterceptors(interceptors);
@@ -43,13 +43,6 @@ public class ApiSteps extends Stepdef {
   @Given("^POST (.+) on RTS (?:from (.+) )?into (.+)$")
   public void postRts(String url, String source, String rememberBy, String json) throws IOException {
     LOGGER.info("POSTING: " + url);
-
-    /*
-     * 
-     * if (json != null && json.trim().isEmpty()) - json = null; - if (json != null) - json =
-     * replaceVars(json, EncodeType.JSON); - if (source == null || source.isEmpty()) - source =
-     * "TESTING";
-     */
 
     final String urlNew = replaceVars(url, EncodeType.URL);
 
@@ -119,12 +112,6 @@ public class ApiSteps extends Stepdef {
   public void getRts(String url, String source, String rememberBy) throws IOException {
     url = replaceVars(url, EncodeType.URL);
 
-    // source = Optional.ofNullable(source).filter(sInnerrr ->
-    // !sInnerrr.isEmpty()).orElse("TESTING");
-    /*
-     * if (source == null || source.isEmpty()) source = "TESTING";
-     */
-
     RestTemplate restTemplate =
         client(Optional.ofNullable(source).filter(sInnerrr -> !sInnerrr.isEmpty())
             .orElse("TESTING"));
@@ -151,42 +138,6 @@ public class ApiSteps extends Stepdef {
     System.out.println("Response: " + res.getClass());
     System.out.println(mapper.writeValueAsString(res));
     return "";
-  }
-
-
-
-  @Given("^DELETE (.+) on RTS(?:from (.+))?$")
-  public void deleteRts(String url, String source) throws IOException {
-
-    url = replaceVars(url, EncodeType.URL);
-
-    // source = Optional.ofNullable(source).filter(sInnerrr ->
-    // !sInnerrr.isEmpty()).orElse("TESTING");
-    /*
-     * if (source == null || source.isEmpty()) source = "TESTING";
-     */
-    RestTemplate restTemplate =
-        client(Optional.ofNullable(source).filter(sInnerrr -> !sInnerrr.isEmpty())
-            .orElse("TESTING"));
-
-    System.out.println("DELETing from " + url);
-    try {
-      // @SuppressWarnings("unchecked")
-      restTemplate.delete(apiBase + url);
-      // Object res = restTemplate.exchange(rtsBase + url, HttpMethod.DELETE, null, Object.class);
-      // if (res != null)
-      // System.out.println("Response: " + res.getClass());
-      // System.out.println(mapper.writeValueAsString(res));
-      // data.remember(rememberBy, res);
-    } catch (HttpClientErrorException | HttpServerErrorException e) {
-      throw new IOException("Got response " + e.getStatusCode() + ":\n"
-          + e.getResponseBodyAsString(), e);
-    }
-  }
-
-  @Given("^RTS is running$")
-  public void rts_is_running() throws Throwable {
-
   }
 
   @Given("^the system waits for (\\d+) seconds$")

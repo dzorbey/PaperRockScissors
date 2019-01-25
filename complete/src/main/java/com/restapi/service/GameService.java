@@ -7,6 +7,5 @@ import com.restapi.enums.Game;
 public interface GameService {
 
     GameResponse play(Game selected);
-    
     Game computerMove();
 }

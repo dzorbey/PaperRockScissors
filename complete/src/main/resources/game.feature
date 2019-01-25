@@ -1,22 +1,13 @@
-@Customers1 @Customer_create_&_confirm
-Feature: Customer create & confirm
+@game1 @game_triai
+Feature: Paper-Rock-Scissors GamePlay
 
-  Scenario Outline: Create customer & confirm
-    Given RTS is running
-      """
-      {}
-      """
-    And GET /product/test on RTS into CustomerResult<remember>
-    Then CustomerResult<remember> should match
+  Scenario Outline: Paper-Rock-Scissors GamePlay
+    
+    And GET /game/play on Gameplay into GameResult<remember>
+    Then GameResult<remember> should match
       """
         {
-          "id": "${results['Customer<remember>']['id']}",
-          "email": "${results['Customer<remember>']['email']}",
-          "username": "<username>",
-          "firstName": "<firstName>",
-          "sendElectronicInvoiceAccepted": "true", 
-          "gender": "FEMALE",
-          "pe" : "PE"
+          "result": "I am from properties file"
         }
       """
     

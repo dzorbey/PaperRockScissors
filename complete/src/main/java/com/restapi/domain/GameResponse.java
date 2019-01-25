@@ -1,9 +1,8 @@
 package com.restapi.domain;
 
 @AppPojo
-public class GameResponse {
+public class GameResponse extends AbstractResponse {
 
-	private String result;
 	private String userSelection;
 	private String computerSelection;
 	
@@ -18,11 +17,5 @@ public class GameResponse {
 	}
 	public void setComputerSelection(String computerSelection) {
 		this.computerSelection = computerSelection;
-	}
-	public String getResult() {
-		return result;
-	}
-	public void setResult(String result) {
-		this.result = result;
 	}
 }

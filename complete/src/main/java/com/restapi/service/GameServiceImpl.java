@@ -50,7 +50,8 @@ public class GameServiceImpl implements GameService {
     	
     	GameResults result = GameConditions.fromText(userSelected.name() + "_" + computerSelected.name()).getResult();
     	System.out.println("Game result : " + result.name());
-    	response.setResult(result.name());
+    	response.setMessage(result.name());
+    	response.setSuccess(true);
     	
     	return response;
     }
