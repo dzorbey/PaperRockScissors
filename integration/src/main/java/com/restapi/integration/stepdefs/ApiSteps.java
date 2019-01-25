@@ -22,6 +22,10 @@ import com.restapi.integration.Stepdef;
 
 import cucumber.api.java.en.Given;
 
+/*
+ * This is an already existing codebase, replaced existing if conditions with optionals, 
+ * but not in all classes of the same project i did so, here done for demonstration purposes.
+ */
 public class ApiSteps extends Stepdef {
   final static Log LOGGER = LogFactory.getLog(ApiSteps.class);
 

@@ -3,6 +3,11 @@ package com.restapi.enums;
 import io.swagger.annotations.ApiModel;
 import java.util.Arrays;
 
+
+/** 
+ * Define the game as a high level enumaration.
+ * 
+ */
 @ApiModel
 public enum Game {
 	

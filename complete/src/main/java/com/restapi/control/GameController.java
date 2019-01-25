@@ -20,6 +20,10 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 
+	/*
+	 * Returning an Abstract Response here using polymorphism, 
+	 * will be useful if this code to be extended by certain exception handling and matching return objects.
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/play")
 	@ApiOperation(value = "getGameResponse", notes = "Gameplay")
 	public AbstractResponse play(

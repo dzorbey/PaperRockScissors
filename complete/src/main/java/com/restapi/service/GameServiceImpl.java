@@ -15,6 +15,10 @@ import com.restapi.enums.Game;
 import com.restapi.enums.GameConditions;
 import com.restapi.enums.GameResults;
 
+
+/*
+ * GameService, which simulates a randomly selected pick via computer, and matches against the user selection.
+ */
 @Profile("default")
 @Controller
 public class GameServiceImpl implements GameService {

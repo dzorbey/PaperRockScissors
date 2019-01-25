@@ -3,6 +3,9 @@ Feature: Customer create & confirm
 
   Scenario Outline: Create customer & confirm
     
+    #The randomized computerSelection and according return conditions are tested within the MockGameServiceTest.java
+    #This feature tests the functional api responses.
+    
     #Test Api Endpoint by ROCK Input
     And GET /game/play on RTS from ROCK into GameResult1<remember>
     Then GameResult1<remember> should match

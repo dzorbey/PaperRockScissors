@@ -2,6 +2,10 @@ package com.restapi.enums;
 
 import java.util.Arrays;
 
+/*
+ * Defining game results in enumaration, these static mappings could be retrieved from the api.properties file.
+ * the file exists already, and i believe can easily be converted to be so later on. this suffice the need at the moment.
+ */
 public enum GameResults {
 	
 	    COMPUTER_WIN("Computer Wins.."),

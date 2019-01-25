@@ -20,6 +20,10 @@ import cucumber.runtime.io.MultiLoader;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.io.ResourceLoaderClassFinder;
 
+/*
+ * This is an already existing codebase, replaced some existing if conditions with optionals, 
+ * but not in all classes of the same project i did so, here done for demonstration purposes.
+ */
 public class CommandLineRunner {
   public static void main(String[] argsArr) throws IOException {
     runCucumber(argsArr);
@@ -79,19 +83,12 @@ public class CommandLineRunner {
     runtime.run();
     System.exit(runtime.exitStatus());
   }
-  
-  
-  /*
-   * 
-   * https://www.baeldung.com/java-optional
-   */
 
+  
   private static void checkUserSure() {
     @SuppressWarnings("resource")
     Scanner scan = new Scanner(System.in);
 
-    //String codeword = "Permit data loss";
-    
     Preferences codeword = Preferences.MANUAL_PERMIT;
 
         System.out.println("WARNING: These integration tests WILL destroy the data in your databases.");
@@ -99,13 +96,6 @@ public class CommandLineRunner {
              + "\" to continue, or provide the --permit-data-loss command line flag.");
     
         Optional.of(codeword).filter(y -> y == Preferences.fromText(scan.nextLine())).orElseThrow(
-        		RuntimeException::new); //isPresent();
-            
-        /*if (!codeword.equalsIgnoreCase(scan.nextLine())) {
-          System.out.println("Did not see \"" + codeword + "\". Aborting.");
-          System.exit(1);
-          throw new RuntimeException("Aborting");
-        }*/
-
+        		RuntimeException::new);
   }
 }

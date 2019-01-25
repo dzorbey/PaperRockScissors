@@ -2,6 +2,10 @@ package com.restapi.enums;
 
 import java.util.Arrays;
 
+/*
+ * Defining game return conditinos, this is where the logic of the game lies in and further on can be extended with changing conditions
+ * without touching the gameService, and only updating the Mock gameService with associated testing features.
+ */
 public enum GameConditions {
 
 	PAPER_ROCK(Game.PAPER + "_" + Game.ROCK, GameResults.USER_WIN), 

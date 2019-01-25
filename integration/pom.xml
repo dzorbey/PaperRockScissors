@@ -3,7 +3,7 @@
 
 	<groupId>com.game.integration</groupId>
 	<artifactId>game-restapi-integration</artifactId>
-	<version>1.0.9-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Game RestApi integration</name>
 
