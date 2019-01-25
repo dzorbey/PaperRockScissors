@@ -1,1 +1,1 @@
-# gs-rest-service
+# Paper-Rock-Scissors Game Api Project
