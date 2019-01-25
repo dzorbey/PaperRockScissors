@@ -1,12 +1,12 @@
 package com.restapi.service;
 
-import com.restapi.domain.ResponseObject;
+import com.restapi.domain.GameResponse;
 import com.restapi.enums.Game;
 
 
 public interface GameService {
 
-    ResponseObject play(Game selected);
+    GameResponse play(Game selected);
     
     Game computerMove();
 }

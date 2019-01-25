@@ -1,18 +1,16 @@
 package com.restapi.enums;
 
-import io.swagger.annotations.ApiModel;
 import java.util.Arrays;
 
-@ApiModel
-public enum Game {
+public enum GameResults {
 	
-	    ROCK("ROCK"),
-	    PAPER("ROCK"),
-	    SCISSORS("SCISSORS");
-	    
+	    COMPUTER_WIN("Computer Wins.."),
+	    USER_WIN("Congratulations, You Win.."),	    
+	    NO_WIN("Selected the same, try again..");
+	        
 	    private String text;
 
-	    Game(String text) {
+	    GameResults(String text) {
 	        this.text = text;
 	    }
 	    
@@ -20,7 +18,7 @@ public enum Game {
 	        return this.text;
 	    }
 	    
-	    public static Game fromText(String text) {
+	    public static GameResults fromText(String text) {
 	    	return Arrays.stream(values())
 	          .filter(bl -> bl.text.equalsIgnoreCase(text))
 	          .findFirst()

@@ -8,12 +8,13 @@ import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
-import com.restapi.domain.ResponseObject;
+
+import com.restapi.domain.GameResponse;
 import com.restapi.enums.Game;
 import com.restapi.enums.GameConditions;
+import com.restapi.enums.GameResults;
 
 @Profile("default")
 @Controller
@@ -28,10 +29,6 @@ public class GameServiceImpl implements GameService {
     	add(Game.SCISSORS);
     }};
     
-    @Value("${api.test.variable}")
-    String testVariable;
-    
-    
     
     @Override
     public Game computerMove() {
@@ -40,41 +37,21 @@ public class GameServiceImpl implements GameService {
     }
     
     
-    
     @Override
-    public ResponseObject play(Game userSelected) {
-    	ResponseObject object = new ResponseObject();
-    	object.setResult(testVariable);
+    public GameResponse play(Game userSelected) {
+    	GameResponse response = new GameResponse();
     	
     	Game computerSelected = computerMove();
     	System.out.println("userSelected is : " + userSelected);
-    	
-    	Optional<Game> selected = Optional.of(userSelected).filter(s -> s == computerSelected);
-    	
     	System.out.println("computerSelected is : " + computerSelected.name());
     	
+    	response.setComputerSelection(computerSelected.name());
+		response.setUserSelection(userSelected.name());
     	
-    	selected.ifPresent(s -> {
-    		
-    		System.out.println("try again, selected the same");
-    		object.setResult("selected the same");
-    	});
+    	GameResults result = GameConditions.fromText(userSelected.name() + "_" + computerSelected.name()).getResult();
+    	System.out.println("Game result : " + result.name());
+    	response.setResult(result.name());
     	
-    	
-    	selected.orElseGet(() -> {
-    		
-    	
-    		Game result = GameConditions.fromText(userSelected.name() + "_" + computerSelected.name()).isWin();
-    		
-    		System.out.println("selected differently, result : " + result.getText());
-    		
-    		
-    		return Game.PAPER;
-    	});
-    	
-    	
-    	
-    	
-    	return object;
+    	return response;
     }
 }
