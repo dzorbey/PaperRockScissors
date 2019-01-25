@@ -13,8 +13,10 @@ Example curl command for testing :
     
 Apart from functional testing via Mock instances in the project, there is a seperate integration project that can be initiated to test the API endpoints by exact input/response objects. 
 
-Once the rest api is running you can initite the api endpoint testing via the RunTests.java class inside integration project.
+Once the rest api is running you can initite the api endpoint testing via the RunTests.java class inside integration project. The properties file for the integration project is :
+   integration.properties
 
-Check game.feature which uses cucumber for testing.
+cucumber feature for testing :
+   game.feature
 
 The integretion project is an implementation for the game api of an existing project of mine which should not be considered in the same context of the game project codebase in terms of modelling and if statements usage, It should be working for any api endpoint as long as step definitions are correctly defined.
