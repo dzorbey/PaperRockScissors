@@ -1,2 +1,1 @@
-# PaperRockScissors
-Paper-Rock-Scissors game implementation
+# gs-rest-service
