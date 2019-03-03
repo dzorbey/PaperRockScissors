@@ -10,9 +10,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServletInitilizer {
 
-    @Value("${game.service.mock}")
-    String gameMock;
-	
     @Bean
     ServletRegistrationBean<WebServlet> h2servletRegistration(){
         ServletRegistrationBean<WebServlet> registrationBean = new ServletRegistrationBean<WebServlet>( new WebServlet());

@@ -52,8 +52,8 @@ public class GameServiceImpl implements GameService {
 		response.setUserSelection(userSelected.name());
     	
     	GameResults result = GameConditions.fromText(userSelected.name() + "_" + computerSelected.name()).getResult();
-    	System.out.println("Game result : " + result.name());
-    	response.setMessage(result.name());
+    	System.out.println("Game result [testing_again]: " + result.name());
+    	response.setMessage("updated for testing : " + result.name());
     	response.setSuccess(true);
     	
     	return response;
