@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
@@ -22,6 +23,7 @@ import com.restapi.enums.GameResults;
 @Profile("default")
 @Controller
 public class GameServiceImpl implements GameService {
+	
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
     static final List<Game> computerList = new ArrayList<Game>() {
@@ -52,8 +54,8 @@ public class GameServiceImpl implements GameService {
 		response.setUserSelection(userSelected.name());
     	
     	GameResults result = GameConditions.fromText(userSelected.name() + "_" + computerSelected.name()).getResult();
-    	System.out.println("Game result [testing_again]: " + result.name());
-    	response.setMessage("updated for testing : " + result.name());
+    	System.out.println("Game result [game]: "  + result.name());
+    	response.setMessage("updated for [game]: " + result.name());
     	response.setSuccess(true);
     	
     	return response;
