@@ -23,6 +23,9 @@ public enum GameConditions {
 	private String text;
 	private GameResults result;
 
+	private Game myGame;
+	
+	
 	GameConditions(String text, GameResults result) {
 		this.text = text;
 		this.result = result;

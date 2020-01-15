@@ -15,14 +15,14 @@ public enum Game {
 	    PAPER("ROCK"),
 	    SCISSORS("SCISSORS");
 	    
-	    private String text;
+	    public String text;
 
 	    Game(String text) {
-	        this.text = text;
+	    	this.text = text;
 	    }
 	    
 	    public String getText() {
-	        return this.text;
+	    	return this.text + System.currentTimeMillis();
 	    }
 	    
 	    public static Game fromText(String text) {
